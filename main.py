@@ -7,7 +7,7 @@ import datetime
 def create_query(answer:[str]) -> str:
     '''функция для динамического формирования запроса'''
     answer = answer.split(' ')
-    date_pattern = re.compile(r'\d{4}(\.\d{2}){2}') #прогоняем паттерн перед началом работы
+    date_pattern = re.compile(r'\d{4}(-\d{2}){2}') #прогоняем паттерн перед началом работы
     dates = []
     columns = ''
     trash_mods = [] #список для сбора неопознанной информации
@@ -28,12 +28,12 @@ def create_query(answer:[str]) -> str:
     where_query = ''
     if len(dates) == 1:
         #если передали 1 дату - формируем условие
-        date1 = list(map(int, dates[0].split('.')))
+        date1 = list(map(int, dates[0].split('-')))
         where_query = f' where date_time > TO_DATE(\'{date1[0]}/{date1[1]}/{date1[2]}\', \'YYYY/MM/DD\') and date_time < CURRENT_DATE' #от переданной до тякущей
     elif len(dates) == 2:
         # если передали 2 даты - находим наибольшую
-        date1 = list(map(int, dates[0].split('.')))
-        date2 = list(map(int, dates[1].split('.')))
+        date1 = list(map(int, dates[0].split('-')))
+        date2 = list(map(int, dates[1].split('-')))
         #создаем условие в зависимости от наибольшой из дат
         if datetime.date(date1[0], date1[1], date1[2]) < datetime.date(date2[0], date2[1], date2[2]):
             where_query = f' where date_time > TO_DATE(\'{date1[0]}/{date1[1]}/{date1[2]}\', \'YYYY/MM/DD\') and date_time < TO_DATE(\'{date2[0]}/{date2[1]}/{date2[2]}\', \'YYYY/MM/DD\')'
