@@ -13,17 +13,17 @@
 %b - Размер ответа в байтах
 
 Примеры работы api
-http://127.0.0.1:5000/logs
-http://127.0.0.1:5000/logs
-http://127.0.0.1:5000/logs?ip=192.168.1.1
-http://127.0.0.1:5000/logs?start_date=2024-06-01&end_date=2024-06-13
+1) http://127.0.0.1:5000/logs
+2) http://127.0.0.1:5000/logs
+3) http://127.0.0.1:5000/logs?ip=192.168.1.1
+4) http://127.0.0.1:5000/logs?start_date=2024-06-01&end_date=2024-06-13
 
 
 примеры работы выборки из бд
-select_logs
-select_logs date_time weight
-select_logs date_time weight
-select_logs 2006-01-01
-select_logs 2006-01-01 2010-01-01
-select_logs date_time 2006-01-01 weight 2010-01-01
-select_logs date_time 2006-01-01 
+1) select_logs
+2) select_logs date_time weight
+3) select_logs date_time weight
+4) select_logs 2006-01-01
+5) select_logs 2006-01-01 2010-01-01
+6) select_logs date_time 2006-01-01 weight 2010-01-01
+7) select_logs date_time 2006-01-01 
